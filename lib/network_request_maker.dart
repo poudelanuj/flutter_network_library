@@ -43,7 +43,7 @@ class NetworkResponse{
 
 static NetworkResponse netError(){
     return NetworkResponse(
-      data:json.encode({'error_message': 'Connection failed'}),
+      data:json.encode({'error_message': 'Custom text message'}),
       success: false,
       statusCode: 600
     );
@@ -51,7 +51,7 @@ static NetworkResponse netError(){
 
   static NetworkResponse notFoundError([String data]){
     return NetworkResponse(
-      data:data??json.encode({'error_message': 'not found'}),
+      data:data??json.encode({'error_message': 'Data not found'}),
       success: false,
       statusCode: 404
     );
