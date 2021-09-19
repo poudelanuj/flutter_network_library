@@ -25,11 +25,11 @@ class NetworkResponse{
     );
   }
 
-  static NetworkResponse valError(String data){
+  static NetworkResponse valError(String data, int i){
     return NetworkResponse(
       data:data,
       success: false,
-      statusCode: 400
+      statusCode: i
     );
   }
 
@@ -194,7 +194,7 @@ class NetworkRequestMaker {
      return NetworkResponse.authError(responseString);
      }
 
-     return NetworkResponse.valError(responseString);
+     return NetworkResponse.valError(responseString, response.statusCode);
 
   }
 
