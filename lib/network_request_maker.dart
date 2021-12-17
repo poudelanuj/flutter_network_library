@@ -33,11 +33,11 @@ class NetworkResponse{
     );
   }
 
-  static NetworkResponse authError(String data){
+  static NetworkResponse authError(String data, int i){
     return NetworkResponse(
       data: data,
       success: false,
-      statusCode: 401
+      statusCode: i
     );
   }
 
@@ -191,7 +191,7 @@ class NetworkRequestMaker {
 
       }
 
-     return NetworkResponse.authError(responseString);
+     return NetworkResponse.authError(responseString, response.statusCode);
      }
 
      return NetworkResponse.valError(responseString, response.statusCode);
