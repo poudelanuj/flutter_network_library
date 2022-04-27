@@ -124,7 +124,7 @@ class NetworkRequestMaker {
 
     Uri finalUrl;
 
-    if(Uri.tryParse(path?.call(identifiers)).isAbsolute??false){
+    if(Uri.tryParse(path?.call(identifiers))?.isAbsolute??false){
 
     var url = Uri.parse(path(identifiers));
 
