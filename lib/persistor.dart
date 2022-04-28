@@ -32,13 +32,16 @@ class Response {
   @HiveField(6)
   int statusCode;
 
+  @HiveField(7)
+  dynamic libraryError;
+
   Response({
     this.success = false,
     this.fetching = false,
     this.data = const {},
     this.error = const {},
-    this.statusCode = 200
-
+    this.statusCode = 200,
+    this.libraryError = const {}
   });
 
    List<Map<String,dynamic>> parseList(){
@@ -178,7 +181,8 @@ class Persistor{
     bool success,
     dynamic data,
     String rawData,
-    int statusCode
+    int statusCode,
+    dynamic libraryError
   })
   async
   {
@@ -192,8 +196,10 @@ class Persistor{
     result.data = data;
     result.error = {};
     }
-    else
+    else{
     result.error = (data as Map).cast<String,dynamic>();
+    result.libraryError = libraryError;
+  }
 
   result.statusCode = statusCode;
   result.timeStamp = DateTime.now();

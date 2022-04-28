@@ -261,13 +261,16 @@ class RESTExecutor{
     rawData: response.data,
     data: decoded,
     statusCode: response.statusCode,
+        libraryError: response.error
+
     );
     }catch(e){
      await cache.complete(getKey(),
           success: response.success,
           rawData: response.data,
           data: {},
-          statusCode: response.statusCode
+          statusCode: response.statusCode,
+          libraryError: response.error
           );
     }
 
