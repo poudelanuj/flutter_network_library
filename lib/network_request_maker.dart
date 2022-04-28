@@ -10,11 +10,13 @@ class NetworkResponse{
   int statusCode;
   bool success;
   String data;
+  dynamic error;
 
   NetworkResponse({
     this.statusCode,
     this.data,
-    this.success = false
+    this.success = false,
+    this.error;
   });
 
   static NetworkResponse ok(String data,[int statusCode = 200]){
@@ -41,11 +43,12 @@ class NetworkResponse{
     );
   }
 
-static NetworkResponse netError(){
+static NetworkResponse netError(e){
     return NetworkResponse(
       data:json.encode({'message': 'It seems like we could not find an internet connection.'}),
       success: false,
-      statusCode: 600
+      statusCode: 600,
+      error: e
     );
   }
 
@@ -150,7 +153,7 @@ class NetworkRequestMaker {
 
     } catch (e) {
       print(e);
-      return NetworkResponse.netError();
+      return NetworkResponse.netError(e);
     }
     request.headers['Content-Type'] = 'application/json';
 
@@ -166,7 +169,7 @@ class NetworkRequestMaker {
     } catch (e) {
 
       print(e);
-      return NetworkResponse.netError();
+      return NetworkResponse.netError(e);
     }
 
     String responseString = '';
