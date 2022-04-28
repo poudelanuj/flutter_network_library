@@ -16,7 +16,7 @@ class NetworkResponse{
     this.statusCode,
     this.data,
     this.success = false,
-    this.error;
+    this.error
   });
 
   static NetworkResponse ok(String data,[int statusCode = 200]){
