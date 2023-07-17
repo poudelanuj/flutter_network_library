@@ -8,7 +8,7 @@ part of 'persistor.dart';
 
 class ResponseAdapter extends TypeAdapter<Response> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
   Response read(BinaryReader reader) {

@@ -2,14 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_network_library/data_provider.dart';
-import 'package:hive/hive.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:path_provider/path_provider.dart';
 part 'persistor.g.dart';
 
 
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 1)
 class Response {
   @HiveField(0)
   String? rawData;
