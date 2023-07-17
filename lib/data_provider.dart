@@ -170,7 +170,7 @@ class RESTExecutor {
     return '$method$label$identifiers${params.toString()?.hashCode}${headers.toString()?.hashCode}';
   }
 
-  Future<Response> execute({Map<String, dynamic>? data, bool? mutation}) async {
+  Future<Response> execute({dynamic data, bool? mutation}) async {
     switch (domains[domain]?.type) {
       case DomainType.network:
         return networkExecute(data, mutation ?? false);
@@ -197,7 +197,7 @@ class RESTExecutor {
   }
 
   Future<Response> networkExecute(
-      Map<String, dynamic>? data, bool mutation) async {
+      dynamic data, bool mutation) async {
     cache?.start(getKey());
 
     NetworkResponse? response = await requestMaker?.execute(
